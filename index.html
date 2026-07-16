@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>English Lab — دوره ۶ ماهه زبان برای کار ریموت</title>
+<meta name="theme-color" content="#0C161C">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="app">
+
+  <header class="top">
+    <div class="brand"><b>آزمایشگاه زبان</b><span class="en">ENGLISH LAB</span></div>
+    <div class="streak">زنجیره: <b id="streak">0</b> روز</div>
+  </header>
+
+  <!-- ================= HOME ================= -->
+  <section id="screen-home">
+    <div class="gauge-wrap">
+      <div class="gauge" id="main-gauge"></div>
+      <div class="note" id="course-note"></div>
+    </div>
+
+    <div class="weekinfo">
+      <span>هفته <b id="wk-num">۱</b> از ۲۴ — روز <b id="day-num">۱</b> از ۷</span>
+      <span class="en" id="wk-en"></span>
+    </div>
+
+    <div class="card">
+      <h3 id="wk-title"></h3>
+      <div class="fa-line" id="wk-desc"></div>
+    </div>
+
+    <div class="session-cards">
+      <div class="slot" id="slot-noon">
+        <i class="lamp"></i>
+        <span class="time">13:00</span>
+        <span class="name">جلسه شنیداری</span>
+        <span class="state" id="state-noon">در انتظار</span>
+      </div>
+      <div class="slot" id="slot-night">
+        <i class="lamp"></i>
+        <span class="time">21:00</span>
+        <span class="name">جلسه گفتاری</span>
+        <span class="state" id="state-night">در انتظار</span>
+      </div>
+    </div>
+
+    <button class="btn" id="btn-start">شروع جلسه (۳۰ دقیقه)</button>
+    <div class="note" style="text-align:center" id="next-hint"></div>
+
+    <div class="week-list card" id="week-list"></div>
+  </section>
+
+  <!-- ================= SESSION ================= -->
+  <section id="screen-session" class="hidden">
+    <div class="session-top">
+      <div class="step-title" id="step-title">گام<b>—</b></div>
+      <div class="mini-gauge" id="timer-gauge"></div>
+    </div>
+    <div class="progress-dots" id="dots"></div>
+    <div id="stage"></div>
+    <div style="height:14px"></div>
+    <div class="row">
+      <button class="btn ghost small" id="btn-exit">خروج</button>
+      <button class="btn" id="btn-next">ادامه</button>
+    </div>
+  </section>
+
+  <!-- ================= RESULT ================= -->
+  <section id="screen-result" class="hidden">
+    <div class="result-big">
+      <div class="pct" id="res-pct">—</div>
+      <div class="msg" id="res-msg"></div>
+    </div>
+    <div class="card" id="res-detail"></div>
+    <button class="btn cyan" id="btn-home">بازگشت به خانه</button>
+  </section>
+
+</div>
+<script src="data.js"></script>
+<script src="app.js"></script>
+<script>
+if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js');}
+</script>
+</body>
+</html>
