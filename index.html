@@ -12,13 +12,18 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js" defer></script>
 </head>
 <body>
 <div id="app">
 
   <header class="top">
     <div class="brand"><b>آزمایشگاه زبان</b><span class="en">ENGLISH LAB</span></div>
-    <div class="streak">زنجیره: <b id="streak">0</b> روز</div>
+    <div class="top-actions">
+      <button class="icon-btn" id="btn-theme" title="تم">🌗</button>
+      <button class="icon-btn" id="btn-profile" title="پروفایل">👤</button>
+      <div class="streak">🔥 <b id="streak">0</b></div>
+    </div>
   </header>
 
   <!-- ================= HOME ================= -->
@@ -36,6 +41,14 @@
     <div class="card">
       <h3 id="wk-title"></h3>
       <div class="fa-line" id="wk-desc"></div>
+    </div>
+
+    <div class="card social-card" id="social-card">
+      <h3>☕ معاشرت روزانه</h3>
+      <div class="en-line" id="social-q"></div>
+      <div class="en-line" id="social-a"></div>
+      <div class="fa-line" id="social-fa"></div>
+      <button class="btn ghost small" id="social-play">🔊 گوش بده و تکرار کن</button>
     </div>
 
     <div class="session-cards">
@@ -57,6 +70,49 @@
     <div class="note" style="text-align:center" id="next-hint"></div>
 
     <div class="week-list card" id="week-list"></div>
+  </section>
+
+  <!-- ================= PROFILE ================= -->
+  <section id="screen-profile" class="hidden">
+    <h2 class="page-title">پروفایل و تحلیل پیشرفت</h2>
+
+    <div class="card">
+      <h3>مشخصات</h3>
+      <label class="fld">نام <input type="text" id="pf-name" placeholder="نام شما"></label>
+      <label class="fld">هدف شغلی <input type="text" id="pf-goal" placeholder="مثلاً Remote BI Developer"></label>
+      <label class="fld">سطح فعلی
+        <select id="pf-level">
+          <option value="beginner">مبتدی</option>
+          <option value="intermediate" selected>متوسط</option>
+          <option value="advanced">پیشرفته</option>
+        </select>
+      </label>
+    </div>
+
+    <div class="card">
+      <h3>📄 شخصی‌سازی با رزومه</h3>
+      <div class="fa-line">فایل PDF رزومه‌ات را وارد کن تا مهارت‌هایت استخراج شود و جمله‌های تمرین شخصی بر اساس آنها به جلسات گفتاری اضافه شود.</div>
+      <input type="file" id="pf-resume" accept="application/pdf" class="file-in">
+      <div id="pf-skills" class="chips"></div>
+      <div class="note" id="pf-resume-msg"></div>
+    </div>
+
+    <div class="card">
+      <h3>📈 روند نمرات آزمون</h3>
+      <div id="chart-quiz" class="chart"></div>
+      <div class="stat-row">
+        <div class="stat"><b id="st-sessions">۰</b><span>جلسه کامل</span></div>
+        <div class="stat"><b id="st-quiz">—</b><span>میانگین آزمون</span></div>
+        <div class="stat"><b id="st-speak">—</b><span>دقت گفتار</span></div>
+      </div>
+      <div class="stat-row">
+        <div class="stat"><b id="st-listen">—</b><span>جلسات شنیداری</span></div>
+        <div class="stat"><b id="st-talk">—</b><span>جلسات گفتاری</span></div>
+        <div class="stat"><b id="st-streak2">۰</b><span>زنجیره (روز)</span></div>
+      </div>
+    </div>
+
+    <button class="btn cyan" id="btn-profile-back">بازگشت</button>
   </section>
 
   <!-- ================= SESSION ================= -->

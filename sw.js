@@ -1,5 +1,5 @@
 // English Lab SW — cache-first so lessons work offline after first load
-const C = "englab-v1";
+const C = "englab-v2";
 const ASSETS = ["./","index.html","styles.css","app.js","data.js","manifest.json","icon-192.png","icon-512.png"];
 self.addEventListener("install", e => {
   e.waitUntil(caches.open(C).then(c => c.addAll(ASSETS)).then(()=>self.skipWaiting()));
